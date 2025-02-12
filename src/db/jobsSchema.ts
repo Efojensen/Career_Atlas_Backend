@@ -2,7 +2,7 @@ import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { employersTable } from "./employersSchema";
 
 export const jobsTable = pgTable("jobs", {
-    jobId: integer('job_id'),
+    jobId: integer('job_id').primaryKey().generatedAlwaysAsIdentity(),
     jobName: varchar('job_name', { length: 255 }).notNull(),
     jobDescription: varchar('job_desc', { length: 255 }),
     benefits: varchar({ length: 255 }),
