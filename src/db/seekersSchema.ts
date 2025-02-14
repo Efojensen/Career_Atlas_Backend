@@ -1,5 +1,4 @@
-import { createInsertSchema } from "drizzle-zod";
-import { appliedJobsTable } from "./appliedJobsSchema";
+import { createInsertSchema, createUpdateSchema } from "drizzle-zod";
 import { integer, pgTable, varchar, boolean } from "drizzle-orm/pg-core";
 
 export const seekersTable = pgTable("seekers", {
@@ -9,8 +8,10 @@ export const seekersTable = pgTable("seekers", {
     email: varchar({ length: 255 }).notNull().unique(),
     profilePic: varchar('profile_pic', { length: 255 }),
     student: boolean().default(true),
-    yearsOfExperience: integer('years_of_exp'),
+    yearsOfExperience: integer('years_of_exp').default(0),
     education: varchar({ length: 255 }),
 });
 
 export const createSeekerRecord = createInsertSchema(seekersTable);
+
+export const updateSeekerRecord = createUpdateSchema(seekersTable).partial();
