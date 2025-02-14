@@ -1,9 +1,11 @@
 import express from 'express';
 import users from './routers/users';
+import employers from './routers/employers';
 
 const app = express();
 app.use(express.json());
-app.use('/users', users);
+app.use('/user', users);
+app.use('/emp', employers)
 
 app.get('/', (req, res) => {
     res.status(200).send("Hello world");

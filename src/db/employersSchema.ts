@@ -7,7 +7,7 @@ export const employersTable = pgTable("employers", {
     companyName: varchar('company_name', { length: 255 }).notNull(),
     companyDesc: text('company_desc'),
     companyDomain: varchar('company_domain', { length: 255 }),
-    password: varchar('password', { length: 255 }),
+    password: varchar('password', { length: 255 }).notNull(),
     locationId: integer('loc_id')
         .references(() => locationsTable.srcId),
 })
