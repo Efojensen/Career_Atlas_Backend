@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import { seekersTable } from '../../db/seekersSchema';
 
 export async function createNewUser(req:Request, res:Response) {
-    const data = req.userData;
+    const data = req.intel;
     try {
         data.password = await bcrypt.hash(data.password, 10)
         const [newUser] = await db.insert(seekersTable)

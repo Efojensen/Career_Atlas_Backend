@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import { employersTable } from '../../db/employersSchema';
 
 export async function createEmployer(req: Request, res: Response){
-    const empData = req.compData;
+    const empData = req.intel;
     try{
         empData.password = await bcrypt.hash(empData.password, 10);
         const [result] = await db.insert(employersTable)
