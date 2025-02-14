@@ -8,7 +8,7 @@ export const seekersTable = pgTable("seekers", {
     password: varchar({ length: 255 }).notNull(),
     email: varchar({ length: 255 }).notNull().unique(),
     profilePic: varchar('profile_pic', { length: 255 }),
-    student: boolean(),
+    student: boolean().default(true),
     yearsOfExperience: integer('years_of_exp'),
     education: varchar({ length: 255 }),
 });

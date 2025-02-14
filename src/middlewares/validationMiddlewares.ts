@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from 'express';
 export function validateData(schema: z.ZodObject<any, any>){
     return (req: Request, res: Response, next: NextFunction) => {
         try{
-            schema.parse(req.body);
+            req.userData = _.pick(req.body, Object.keys(schema.shape));
             next();
         }catch (e){
             if (e instanceof ZodError){
